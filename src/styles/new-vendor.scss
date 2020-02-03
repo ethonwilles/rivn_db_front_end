@@ -1,0 +1,178 @@
+
+    .header{
+        display: flex;
+        align-items: center;
+        box-shadow: 0px 2px 1px 0px rgba(0,0,0,0.75);
+        .image-div{
+            display: flex;
+            flex: auto;
+            img{
+                height: 50px;
+                width: 120px;
+                padding: 10px;
+            }
+            h1{
+                font-size: 50px;
+                margin: 7px 0 0 0;
+                font-weight: 800;
+                font-family: 'Montserrat', 'sans-serif';
+            }
+        }
+        .search-bar{
+            flex: inherit;
+            input{
+                width: 30vw;
+                height: 30px;
+                border: 1.5px solid $rivn-blue;
+                padding: 5px;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 800;
+                margin-right: 10px;
+            }
+        }
+    }
+    .page-wrapper{
+        display: flex;
+        padding-top: 1.5px;
+        height: 100vh;
+        .nav-bar{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 20px;
+            background-color: #A2A5A5;
+            width: 15vw;
+            height: 100vh;
+            border-right: 1px solid $rivn-blue;
+            a{
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                text-align: center;
+                font-family: $main-font;
+                color: white;
+                padding:10px;
+                margin: 15px 0 0 0;
+                background-color: $rivn-blue;
+                width: 100px;
+                height: 45px;
+                border: 1.5px solid #A2A5A5;
+                &:hover{
+                    color: $rivn-blue;
+                    border: 1px solid $rivn-blue;
+                    background-color: white;
+                }
+            }
+        }
+        .button-wrapper{
+            display: flex;
+            width: 86.5vw;
+            button{
+                width: 50%;
+                padding: 10px;
+                background-color: $rivn-blue;
+                border: none;
+                border-right: 1px solid black;
+                border-bottom: 1px solid black;
+                font-size: 25px;
+                font-family: $main-font;
+                color: white;
+                font-weight: 800;
+                &:focus{
+                    outline: 0;
+                }
+                &:hover{
+                    cursor: pointer;
+                    background-color: white;
+                    
+                    color: $rivn-blue;
+                }
+            }
+
+
+            
+        }
+        .content-wrapper{
+            .upperPage{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+            .content-item{
+                display: flex;
+                flex-direction: column;
+                padding-left: 20px;
+                color: $rivn-blue;
+                input{
+                    border-radius: 10px;
+                    border: 1.5px solid lightgray;
+                    padding: 7px;
+                    width: 300px;
+                    font-family: $main-font;
+                    &:focus{
+                        outline: 0;
+                        border-color: $rivn-blue;
+                        font-family: $main-font;
+                    }
+
+                }
+            }
+            
+                .content-item-lower{
+                    
+                    h2{
+                        
+                    color: $rivn-blue
+                }
+                    input{
+                        height: 100px;
+                        width: 500px;
+                    }
+                }
+            .dif{
+                
+                display: flex;
+                align-items: center;
+                h2{
+                    color: $rivn-blue;
+                }
+                .item{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 10px;
+                    select{
+                        padding: 5px;
+                        font-family: $main-font;
+                        &:focus{
+                            outline: 0;
+                        }
+                    }
+                }
+            }
+                .button-div{
+                    margin-top: 40px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-end;
+                }
+            
+                button{
+                    
+                    padding: 12px;
+                    border-radius: 20px;
+                    border: 1px solid $rivn-blue;
+                    background-color: $rivn-blue;
+                    color: white;
+                    cursor: pointer;
+                    font-size: 20px;
+                    font-family: $main-font;
+                    font-weight: 800;
+                }
+            
+            
+        }
+        
+    }
+
+
+

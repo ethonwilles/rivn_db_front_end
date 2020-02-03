@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as BR, Route, Switch} from 'react-router-dom'
+
+//Styles
+import "./styles/main.scss"
+// Pages
+import NewVendor from './components/NewVendor'
+import EditVendor from "./components/EditVendor"
+import listAllVendors from "./components/listAllVendors"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BR>
+      <Switch>
+        <Route exact path="/" component={NewVendor}/>
+        <Route path="/edit-vendor" component={EditVendor}/>
+        <Route path="/list-all" component={listAllVendors}/>
+      </Switch>
+      
+      </BR>
+     
     </div>
   );
 }
