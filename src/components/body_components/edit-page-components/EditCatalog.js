@@ -1,6 +1,7 @@
 import React from "react";
 
 import EditContentItem from "../edit-page-components/editcontentitem";
+import UniqueContent from "./uniquecontent";
 
 const EditCatalog = () => {
   const [newImage, setNewImage] = React.useState("");
@@ -24,10 +25,28 @@ const EditCatalog = () => {
           <div className="new">
             <p>New Entry: </p>
             <input type="file" onChange={e => reader.read(e.target.files[0])} />
-            {console.log(newImage)}
-            <img src={reader.readAsDataURL(newImage)} />
           </div>
         </div>
+      </div>
+      <UniqueContent header="Description" />
+      <div className="content-item-choice">
+        <div className="item">
+          <h2>Display</h2>
+          <select>
+            <option value="Y">Y</option>
+            <option value="N">N</option>
+          </select>
+        </div>
+        <div className="item">
+          <h2>Active</h2>
+          <select>
+            <option value="Y">Y</option>
+            <option value="N">N</option>
+          </select>
+        </div>
+      </div>
+      <div className="button-div-edit">
+        <button type="submit">Submit</button>
       </div>
     </div>
   );
