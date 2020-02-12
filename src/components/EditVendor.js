@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios"
 
 import Header from "./header";
 import NavBar from "./NavBar";
@@ -10,13 +11,28 @@ import "../styles/main.scss";
 const EditVendor = props => {
   const [check, setCheck] = React.useState(true);
   const [currentVendor, setCurrentVendor] = React.useState("");
+  const [vendorInfo, setVendorInfo] = React.useState([])
 
   const [vendors, setVendors] = React.useState([
     "Salesforce",
     "Google Analytics",
     "Adobe Analytics",
-    "Google Ads"
+    "Google Ads",
+    "Taboola"
   ]);
+
+  const vendorSelected = e =>{
+    setCurrentVendor(e.target.options[e.target.selectedIndex].text)
+    axios({
+      method: "GET",
+      url: "http://localhost:5000/edit-vendor-catalog",
+      data: {"name" : currentVendor}
+    }).then(res => res.json()).then(data => console.log(data))
+  
+  }
+
+  
+  
 
   const renderVendors = () => {
     return vendors.map(elem => {
@@ -31,9 +47,7 @@ const EditVendor = props => {
         <div className="body-content">
           <div className="selection">
             <select
-              onChange={e =>
-                setCurrentVendor(e.target.options[e.target.selectedIndex].text)
-              }
+              onChange={vendorSelected}
             >
               <option value="0">Choose Vendor..</option>
               {renderVendors()}
@@ -50,7 +64,7 @@ const EditVendor = props => {
             <h2>{currentVendor === "" ? "Choose Vendor" : currentVendor}</h2>
             <button onClick={() => setCheck(false)}>VendorForm</button>
           </div>
-          {check === true ? <EditCatalog /> : <EditVendorForm />}
+          {check === true ? <EditCatalog vendor={currentVendor} /> : <EditVendorForm />}
         </div>
       </div>
     </div>

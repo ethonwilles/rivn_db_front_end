@@ -3,13 +3,14 @@ import React from "react";
 import EditContentItem from "../edit-page-components/editcontentitem";
 import UniqueContent from "./uniquecontent";
 
-const EditCatalog = () => {
+const EditCatalog = (props) => {
+  const currentVendor = props.vendor
+  
   const [newImage, setNewImage] = React.useState("");
   const [source, setSource] = React.useState("");
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    setSource(e.target.result);
-  };
+  
+
+  
   return (
     <div className="content-wrapper">
       <EditContentItem header="Action URL" value="Dummy Value" />
@@ -24,7 +25,7 @@ const EditCatalog = () => {
           </div>
           <div className="new">
             <p>New Entry: </p>
-            <input type="file" onChange={e => reader.read(e.target.files[0])} />
+            <input type="file"  />
           </div>
         </div>
       </div>

@@ -90,6 +90,10 @@
     }
   }
   .content-wrapper {
+    p{
+      display: flex;
+      align-items: flex-end;
+    }
     .upperPage {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -163,8 +167,17 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      p{
+        font-size: 20px;
+        
+        font-family: $main-font;
+        font-weight: 800;
+        border-top: 1.5px solid green;
+        background-color: lightgreen;
+        padding: 5px;
+      }
     }
-
+      
     button {
       padding: 12px;
       border-radius: 20px;
