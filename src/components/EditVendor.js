@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios"
 
 import Header from "./header";
 import NavBar from "./NavBar";
@@ -11,34 +10,37 @@ import "../styles/main.scss";
 const EditVendor = props => {
   const [check, setCheck] = React.useState(true);
   const [currentVendor, setCurrentVendor] = React.useState("");
-  const [vendorInfo, setVendorInfo] = React.useState([])
+  const [vendorInfo, setVendorInfo] = React.useState([]);
 
-  const [vendors, setVendors] = React.useState([
-    "Salesforce",
-    "Google Analytics",
-    "Adobe Analytics",
-    "Google Ads",
-    "Taboola"
-  ]);
-
-  const vendorSelected = e =>{
-    setCurrentVendor(e.target.options[e.target.selectedIndex].text)
-    axios({
-      method: "GET",
-      url: "http://localhost:5000/edit-vendor-catalog",
-      data: {"name" : currentVendor}
-    }).then(res => res.json()).then(data => console.log(data))
-  
-  }
-
-  
-  
-
-  const renderVendors = () => {
-    return vendors.map(elem => {
-      return <option value={elem}>{elem}</option>;
-    });
+  const [showStyle, setShowStyle] = React.useState("hidden");
+  const [createdText, setCreatedText] = React.useState("");
+  const vendorSelected = e => {
+    e.preventDefault();
+    fetch(
+      [
+        check === true
+          ? "http://localhost:5000/get-vendor-catalog"
+          : "http://localhost:5000/get-vendor-form"
+      ],
+      {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ vendor_id: currentVendor, method: "vendor_id" })
+      }
+    )
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setVendorInfo(data);
+        if (data.USER_FOUND === false) {
+          setCreatedText("Vendor Does Not Exist! Try Again..");
+          setShowStyle("visible");
+        } else if (data.name) {
+          setShowStyle("hidden");
+        }
+      });
   };
+
   return (
     <div className="edit-vendor">
       <Header />
@@ -46,25 +48,29 @@ const EditVendor = props => {
         <NavBar />
         <div className="body-content">
           <div className="selection">
-            <select
-              onChange={vendorSelected}
-            >
-              <option value="0">Choose Vendor..</option>
-              {renderVendors()}
-            </select>
-            <h2>Or</h2>
-            <input
-              className="edit-search"
-              type="text"
-              placeholder="Search by Vendor ID.."
-            />
+            <form className="top-wrapper" onSubmit={vendorSelected}>
+              <input
+                className="edit-search"
+                type="text"
+                placeholder="Search by Vendor ID.."
+                onChange={e => setCurrentVendor(e.target.value)}
+              />
+              <p classname="determiner" style={{ visibility: showStyle }}>
+                {createdText}
+              </p>
+              <button type="submit">Submit</button>
+            </form>
           </div>
           <div className="button-wrapper-edit">
             <button onClick={() => setCheck(true)}>Catalog</button>
-            <h2>{currentVendor === "" ? "Choose Vendor" : currentVendor}</h2>
+            <h2>{currentVendor === "" ? "Choose Vendor" : vendorInfo.name}</h2>
             <button onClick={() => setCheck(false)}>VendorForm</button>
           </div>
-          {check === true ? <EditCatalog vendor={currentVendor} /> : <EditVendorForm />}
+          {check === true ? (
+            <EditCatalog vendor={currentVendor} vendorInfo={vendorInfo} />
+          ) : (
+            <EditVendorForm vendor={currentVendor} vendorInfo={vendorInfo} />
+          )}
         </div>
       </div>
     </div>
