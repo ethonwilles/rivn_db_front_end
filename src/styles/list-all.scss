@@ -1,4 +1,5 @@
-.list-all-content {
+.list-all-content,
+.list-all-specific-content {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding-left: 1vw;
@@ -36,8 +37,8 @@
   }
 }
 
-.list-all {
-  
+.list-all,
+.list-all-specific {
   .page-wrapper {
     background-color: #e8e8e8;
     height: auto;
@@ -46,5 +47,21 @@
       height: auto;
     }
   }
+}
 
+.query-submit {
+  height: 43px;
+  margin-top: 1px;
+  border: none;
+  background-color: $rivn-blue;
+  color: white;
+  font-family: $main-font;
+  text-align: center;
+  cursor: pointer;
+  outline: 0;
+  &:active {
+    background-color: white;
+    color: $rivn-blue;
+    outline: 0;
+  }
 }

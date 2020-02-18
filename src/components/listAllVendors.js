@@ -10,7 +10,7 @@ const ListAll = () => {
   React.useEffect(() => {
     fetch("http://localhost:5000/list-all-vendors")
       .then(res => res.json())
-      .then(data => setAllVendors(data.vendors));
+      .then(data => setAllVendors(data.vendors.sort()));
   }, []);
   const renderVendors = () => {
     if (allVendors) {
