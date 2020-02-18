@@ -1,8 +1,9 @@
 import React from "react";
 
 import ContentItem from "./content-item";
+import VendorId from "./vendor-id";
 
-const Catalog = () => {
+const Catalog = props => {
   const [name, setName] = React.useState("");
   const [vendorID, setVendorID] = React.useState("");
   const [image, setImage] = React.useState("");
@@ -15,10 +16,11 @@ const Catalog = () => {
   const [show, setShow] = React.useState(false);
   const [showStyle, setShowStyle] = React.useState("hidden");
   const [createdText, setCreatedText] = React.useState("");
+  const [id, setId] = React.useState("");
 
   let data = {
     name: name,
-    vendor_id: vendorID,
+    vendor_id: props.id,
     image: image,
     description: desc,
     action_url: actionUrl,
@@ -64,6 +66,7 @@ const Catalog = () => {
         }
       });
   };
+
   return (
     <div className="content-wrapper">
       <form onSubmit={handleSend}>
@@ -72,7 +75,8 @@ const Catalog = () => {
             <div className="created"></div>
 
             <ContentItem header="Name" handleAdd={handleSetData} />
-            <ContentItem header="Vendor ID" handleAdd={handleSetData} />
+
+            <VendorId handleAdd={handleSetData} id={props.id} />
             <div className="content-item">
               <h2>Image</h2>
               <input onChange={e => setImage(e.target.value)} />

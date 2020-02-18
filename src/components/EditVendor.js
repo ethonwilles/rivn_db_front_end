@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from "js-cookie";
 
 import Header from "./header";
 import NavBar from "./NavBar";
@@ -14,6 +15,9 @@ const EditVendor = props => {
 
   const [showStyle, setShowStyle] = React.useState("hidden");
   const [createdText, setCreatedText] = React.useState("");
+  const [vendorCookie, setVendorCookie] = React.useState(
+    !Cookies.get("edit-vendor-click") ? false : Cookies.get("edit-vendor-click")
+  );
   const vendorSelected = e => {
     e.preventDefault();
     fetch(
@@ -40,7 +44,16 @@ const EditVendor = props => {
         }
       });
   };
+  const checkVendor = e => {
+    if (vendorCookie) {
+      document.querySelector(".edit-search").value = vendorCookie;
+      setCurrentVendor(vendorCookie);
+    }
+  };
 
+  React.useEffect(() => {
+    checkVendor();
+  }, []);
   return (
     <div className="edit-vendor">
       <Header />
@@ -53,12 +66,16 @@ const EditVendor = props => {
                 className="edit-search"
                 type="text"
                 placeholder="Search by Vendor ID.."
+                onClick={e => setVendorCookie(false)}
                 onChange={e => setCurrentVendor(e.target.value)}
+                InnerHTML={vendorCookie}
               />
               <p classname="determiner" style={{ visibility: showStyle }}>
                 {createdText}
               </p>
-              <button type="submit">Submit</button>
+              <button className="submit-btn" type="submit">
+                Submit
+              </button>
             </form>
           </div>
           <div className="button-wrapper-edit">

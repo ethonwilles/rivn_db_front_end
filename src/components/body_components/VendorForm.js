@@ -1,8 +1,9 @@
 import React from "react";
 
 import ContentItem from "./content-item";
+import VendorId from "./vendor-id";
 
-const VendorForm = () => {
+const VendorForm = props => {
   const [name, setName] = React.useState("");
   const [vendorID, setVendorID] = React.useState("");
   const [actionType, setActionType] = React.useState("");
@@ -15,9 +16,10 @@ const VendorForm = () => {
   const [active, setActive] = React.useState("");
   const [showStyle, setShowStyle] = React.useState("hidden");
   const [createdText, setCreatedText] = React.useState("");
+  const [id, setId] = React.useState("");
   let data = {
     name: name,
-    vendor_id: vendorID,
+    vendor_id: props.id,
     action_type: actionType,
     description: desc,
     display: display,
@@ -69,13 +71,15 @@ const VendorForm = () => {
         }
       });
   };
+
   return (
     <div className="content-wrapper">
       <form onSubmit={handleSend}>
         <div className="upperPage">
           <div className="grid-item">
             <ContentItem header="Name" handleAdd={handleSetData} />
-            <ContentItem header="Vendor ID" handleAdd={handleSetData} />
+            {/* <ContentItem header="Vendor ID" handleAdd={handleSetData} /> */}
+            <VendorId handleAdd={handleSetData} id={props.id} />
             <ContentItem header="Action Type" handleAdd={handleSetData} />
             <div
               className="content-item-lower"
