@@ -8,7 +8,7 @@ const ListAll = () => {
   const [allVendors, setAllVendors] = React.useState(false);
 
   React.useEffect(() => {
-    fetch("http://localhost:5000/list-all-vendors")
+    fetch("https://rivn-db-backend.herokuapp.com/list-all-vendors")
       .then(res => res.json())
       .then(data => setAllVendors(data.vendors.sort()));
   }, []);
