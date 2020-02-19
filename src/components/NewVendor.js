@@ -14,6 +14,8 @@ import "../styles/main.scss";
 const NewVendor = props => {
   const jerUsername = process.env.REACT_APP_JER_USERNAME
   const jerPass = process.env.REACT_APP_JER_PASSWORD
+  const ethonUsername = process.env.REACT_APP_ETHON_USERNAME
+  const ethonPass = process.env.REACT_APP_ETHON_PASSWORD
   const [id, setId] = React.useState("");
   const [auth, setAuth] = React.useState(!Cookies.get('auth') ? false : Cookies.get('auth'))
   const [username, setUsername] = React.useState("")
@@ -104,8 +106,9 @@ const NewVendor = props => {
           if(jerUsername == username && jerPass == password){
             setAuth(true)
             Cookies.set("auth", auth, {expires: 0.01})
-          }else{
-            console.log("didnt'work")
+          }else if(ethonUsername == username && ethonPass == password){
+            setAuth(true)
+            Cookies.set("auth", auth, {expires: 0.01})
           }
         }
         }>
@@ -115,7 +118,7 @@ const NewVendor = props => {
           </div>
           <div className="input-box">
             <p>Password</p>
-          <input type='text' onChange={e => setPassword(e.target.value)}/>
+          <input type='password' onChange={e => setPassword(e.target.value)}/>
           </div>
           <button type="submit">Submit</button>
           <p className="error"style={{"visibility":`${loginVis}`}}>{loginText}</p>
