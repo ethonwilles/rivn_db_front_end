@@ -15,6 +15,7 @@ const EditVendor = props => {
 
   const [showStyle, setShowStyle] = React.useState("hidden");
   const [createdText, setCreatedText] = React.useState("");
+  
   const [vendorCookie, setVendorCookie] = React.useState(
     !Cookies.get("edit-vendor-click") ? false : Cookies.get("edit-vendor-click")
   );
@@ -55,6 +56,7 @@ const EditVendor = props => {
     checkVendor();
   }, []);
   return (
+    
     <div className="edit-vendor">
       <Header />
       <div className="page-wrapper">
@@ -91,6 +93,7 @@ const EditVendor = props => {
         </div>
       </div>
     </div>
+    
   );
 };
 

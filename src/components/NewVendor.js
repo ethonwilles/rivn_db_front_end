@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from "js-cookie"
 
 import Header from "./header";
 import NavBar from "./NavBar";
@@ -14,7 +15,7 @@ const NewVendor = props => {
   const jerUsername = process.env.REACT_APP_JER_USERNAME
   const jerPass = process.env.REACT_APP_JER_PASSWORD
   const [id, setId] = React.useState("");
-  const [auth, setAuth] = React.useState(false)
+  const [auth, setAuth] = React.useState(!Cookies.get('auth') ? false : Cookies.get('auth'))
   const [username, setUsername] = React.useState("")
   const [password, setPassword] = React.useState("")
   const [loginVis, setLoginVis] =React.useState("hidden")
@@ -102,6 +103,7 @@ const NewVendor = props => {
           }
           if(jerUsername == username && jerPass == password){
             setAuth(true)
+            Cookies.set("auth", auth, {expires: 0.01})
           }else{
             console.log("didnt'work")
           }
