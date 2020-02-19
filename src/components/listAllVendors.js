@@ -15,7 +15,7 @@ const ListAll = () => {
   const renderVendors = () => {
     if (allVendors) {
       return allVendors.map(elem => {
-        if(elem.display == "y" || elem.vendor_id == 'ethon'){
+        if(elem.active == "y" || elem.vendor_id == 'ethon'){
         return (
           <Card
             name={elem.name}
