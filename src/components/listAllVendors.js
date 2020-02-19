@@ -15,7 +15,7 @@ const ListAll = () => {
   const renderVendors = () => {
     if (allVendors) {
       return allVendors.map(elem => {
-        console.log(elem);
+        if(elem.display == "y"){
         return (
           <Card
             name={elem.name}
@@ -23,6 +23,7 @@ const ListAll = () => {
             img={`https://static.rivn.com/images/vendors/${elem.image}`}
           />
         );
+        }
       });
     }
   };
