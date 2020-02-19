@@ -53,17 +53,19 @@ const NewVendor = props => {
     ];
     const numer = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     let idArray = [];
-    for (let increment = 0; increment <= 10; increment++) {
+    for (let increment = 0; increment < 10; increment++) {
       const ranCheck = Math.floor(Math.random() * 2 + 1);
-      const ranSlot = Math.floor(Math.random() * 10);
+      const ranAlpha = Math.floor(Math.random() * 24)
+      const ranSlot = Math.floor(Math.random() * 8);
 
       if (ranCheck === 1) {
-        idArray.push(alpha[ranSlot]);
+        
+        idArray.push(alpha[ranAlpha]);
       } else if (ranCheck === 2) {
         idArray.push(numer[ranSlot]);
       }
     }
-
+    console.log(idArray)
     return idArray.join("");
   };
   React.useEffect(() => {
