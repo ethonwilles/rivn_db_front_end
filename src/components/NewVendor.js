@@ -5,10 +5,20 @@ import NavBar from "./NavBar";
 import Catalog from "./body_components/Catalog";
 import VendorForm from "./body_components/VendorForm";
 
+import rivnLogo from "../images/rivn_logo.png"
 import "../styles/main.scss";
 
+
+
 const NewVendor = props => {
+  const jerUsername = process.env.REACT_APP_JER_USERNAME
+  const jerPass = process.env.REACT_APP_JER_PASSWORD
   const [id, setId] = React.useState("");
+  const [auth, setAuth] = React.useState(false)
+  const [username, setUsername] = React.useState("")
+  const [password, setPassword] = React.useState("")
+  const [loginVis, setLoginVis] =React.useState("hidden")
+  const [loginText, setLoginText] = React.useState("")
   const newId = () => {
     const alpha = [
       "A",
@@ -58,7 +68,7 @@ const NewVendor = props => {
   }, []);
   const [check, setCheck] = React.useState(true);
   return (
-    <div className="NewVendor">
+    auth ? <div className="NewVendor">
       <Header />
       <div className="page-wrapper">
         <NavBar />
@@ -69,6 +79,45 @@ const NewVendor = props => {
           </div>
           {check === true ? <Catalog id={id} /> : <VendorForm id={id} />}
         </div>
+      </div>
+    </div> : 
+    <div className="authPage">
+      
+      <div className="login-box">
+      <div className="image-div">
+        <img src={rivnLogo} alt="RivnLogo"></img>
+        <h2>Database Login</h2>
+        
+      </div>
+        <form onSubmit={e =>{
+          e.preventDefault()
+          
+          if(jerUsername != username){
+            setLoginText("Wrong Username!")
+            setLoginVis("visible")
+          }
+          else if(jerPass != password){
+            setLoginVis("visible")
+            setLoginText('Wrong Password!')
+          }
+          if(jerUsername == username && jerPass == password){
+            setAuth(true)
+          }else{
+            console.log("didnt'work")
+          }
+        }
+        }>
+          <div className="input-box">
+            <p>Username</p>
+          <input type='text' onChange={e => setUsername(e.target.value)}/>
+          </div>
+          <div className="input-box">
+            <p>Password</p>
+          <input type='text' onChange={e => setPassword(e.target.value)}/>
+          </div>
+          <button type="submit">Submit</button>
+          <p className="error"style={{"visibility":`${loginVis}`}}>{loginText}</p>
+        </form>
       </div>
     </div>
   );

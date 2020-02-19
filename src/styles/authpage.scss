@@ -1,0 +1,67 @@
+.authPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $rivn-blue;
+    height: 100vh;
+    .login-box{
+        border: 1.5px solid black;
+        padding: 10px;
+        background-color: white;
+        .image-div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h2{
+                font-family: $main-font;
+                font-size: 28px;
+            }
+            
+        }
+        .error{
+            border-top: 1.5px solid red;
+            background-color: pink;
+            color: red;
+            border-bottom: 0px;
+            padding: 5px;
+        }
+    }
+    .login-box form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        input{
+            width: 15vw;
+            height: 25px;
+            outline: 0;
+            padding: 2px;
+        }
+        p{
+            color: $rivn-blue;
+            font-family: $main-font;
+            border-bottom: 1.5px solid $rivn-blue;
+            font-weight: 800;
+        }
+        button{
+            border: 1.5px solid white;
+            border-radius: 20px;
+            background-color: $rivn-blue;
+            width: 6vw;
+            height: 35px;
+            color: white;
+            font-family: $main-font;
+            font-size: 16px;
+            padding: 5px;
+            margin-top: 5px;
+            outline: 0;
+            cursor: pointer;
+            &:active{
+                outline: 0;
+                background-color: white;
+                border: 1.5px solid $rivn-blue;
+                color: $rivn-blue;
+                outline: 0;
+            }
+        }
+    }
+}
