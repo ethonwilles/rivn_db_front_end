@@ -103,8 +103,8 @@ const Catalog = props => {
                   }
                 >
                   <option value="nil">Select</option>
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
+                  <option value="y">y</option>
+                  <option value="n">n</option>
                 </select>
               </div>
               <div className="item">
@@ -115,8 +115,8 @@ const Catalog = props => {
                   }
                 >
                   <option value="nil">Select</option>
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
+                  <option value="y">y</option>
+                  <option value="n">n</option>
                 </select>
               </div>
             </div>

@@ -95,8 +95,8 @@ const VendorForm = props => {
                   setActive(e.target.options[e.target.selectedIndex].text)
                 }
               >
-                <option value="Y">Y</option>
-                <option value="N">N</option>
+                <option value="y">y</option>
+                <option value="n">n</option>
               </select>
             </div>
             <div className="button-div">
