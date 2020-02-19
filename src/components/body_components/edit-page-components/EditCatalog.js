@@ -50,7 +50,7 @@ const EditCatalog = props => {
 
   const handleSendData = e => {
     e.preventDefault();
-    fetch("http://localhost:5000/edit-vendor-catalog", {
+    fetch("https://rivn-db-backend.herokuapp.com/edit-vendor-catalog", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       mode: "cors",
