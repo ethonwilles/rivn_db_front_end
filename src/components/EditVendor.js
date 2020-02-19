@@ -24,8 +24,8 @@ const EditVendor = props => {
     fetch(
       [
         check === true
-          ? "http://localhost:5000/get-vendor-catalog"
-          : "http://localhost:5000/get-vendor-form"
+          ? "https://rivn-db-backend.herokuapp.com/get-vendor-catalog"
+          : "https://rivn-db-backend.herokuapp.com/get-vendor-form"
       ],
       {
         method: "POST",

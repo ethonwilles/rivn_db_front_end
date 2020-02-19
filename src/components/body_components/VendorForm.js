@@ -49,7 +49,7 @@ const VendorForm = props => {
   const handleSend = e => {
     e.preventDefault();
 
-    fetch("http://localhost:5000/new-vendor-form", {
+    fetch("https://rivn-db-backend.herokuapp.com/new-vendor-form", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       mode: "cors",
