@@ -8,21 +8,21 @@ const ListAll = () => {
   const [allVendors, setAllVendors] = React.useState(false);
 
   React.useEffect(() => {
-    fetch("http://167.99.230.27/list-all-vendors")
+    fetch("https://admin-dev.rivn.com/list-all-vendors")
       .then(res => res.json())
       .then(data => setAllVendors(data.vendors.sort()));
   }, []);
   const renderVendors = () => {
     if (allVendors) {
       return allVendors.map(elem => {
-        if(elem.active == "y" || elem.name == 'ethon'){
-        return (
-          <Card
-            name={elem.name}
-            id={elem.vendor_id}
-            img={`https://static.rivn.com/images/vendors/${elem.image}`}
-          />
-        );
+        if (elem.active == "y" || elem.name == "ethon") {
+          return (
+            <Card
+              name={elem.name}
+              id={elem.vendor_id}
+              img={`https://static.rivn.com/images/vendors/${elem.image}`}
+            />
+          );
         }
       });
     }
