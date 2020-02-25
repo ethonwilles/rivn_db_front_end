@@ -45,7 +45,7 @@ const Catalog = props => {
 
   const handleSend = e => {
     e.preventDefault();
-    fetch("https://rivn-db-backend.herokuapp.com/new-vendor-catalog", {
+    fetch("https://admin-dev.rivn.com/new-vendor-catalog", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)

@@ -14,7 +14,7 @@ const ListAllSpecific = props => {
     console.log("loop");
   });
   React.useEffect(() => {
-    fetch("https://rivn-db-backend.herokuapp.com/list-all-vendors")
+    fetch("https://admin-dev.rivn.com/list-all-vendors")
       .then(res => res.json())
       .then(data => setAllVendors(data.vendors.sort()));
   }, []);

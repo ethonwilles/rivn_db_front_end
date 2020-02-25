@@ -15,7 +15,7 @@ const EditVendor = props => {
 
   const [showStyle, setShowStyle] = React.useState("hidden");
   const [createdText, setCreatedText] = React.useState("");
-  
+
   const [vendorCookie, setVendorCookie] = React.useState(
     !Cookies.get("edit-vendor-click") ? false : Cookies.get("edit-vendor-click")
   );
@@ -24,8 +24,8 @@ const EditVendor = props => {
     fetch(
       [
         check === true
-          ? "https://rivn-db-backend.herokuapp.com/get-vendor-catalog"
-          : "https://rivn-db-backend.herokuapp.com/get-vendor-form"
+          ? "https://admin-dev.rivn.com/get-vendor-catalog"
+          : "https://admin-dev.rivn.com/get-vendor-form"
       ],
       {
         method: "POST",
@@ -56,7 +56,6 @@ const EditVendor = props => {
     checkVendor();
   }, []);
   return (
-    
     <div className="edit-vendor">
       <Header />
       <div className="page-wrapper">
@@ -93,7 +92,6 @@ const EditVendor = props => {
         </div>
       </div>
     </div>
-    
   );
 };
 

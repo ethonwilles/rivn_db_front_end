@@ -60,7 +60,7 @@ const EditVendorForm = props => {
 
   const handleSendData = e => {
     e.preventDefault();
-    fetch("https://rivn-db-backend.herokuapp.com/edit-vendor-form", {
+    fetch("https://admin-dev.rivn.com/edit-vendor-form", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       mode: "cors",
