@@ -1,9 +1,26 @@
+@import "./variables.scss";
 body {
   margin: 0;
 }
 
-@import "./variables.scss";
+.wrapper {
+  h2 {
+    align-self: center;
+  }
+  display: flex;
+  flex-direction: column;
+
+  input {
+    margin: 5px;
+    padding: 5px;
+    &:focus {
+      outline: 0px;
+    }
+  }
+}
+
 @import "./new-vendor.scss";
 @import "./edit-vendor.scss";
 @import "./list-all.scss";
 @import "./authpage.scss";
+@import "./cookie.scss";
