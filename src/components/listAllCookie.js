@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./header";
 import NavBar from "./NavBar";
 
-import Cookies from "./body_components/cookie-components/cookies";
+import Cookies from "./body_components/cookie-components/cookietest";
 import URLS from "./body_components/cookie-components/urls";
 
 const ListAllCookie = () => {

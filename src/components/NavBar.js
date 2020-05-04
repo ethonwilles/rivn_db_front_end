@@ -8,6 +8,9 @@ const NavBar = () => {
       <Link to="/edit-vendor">Edit Vendor</Link>
       <Link to="/list-all">Registered Vendor List</Link>
       <Link to="/list-all-cookies-urls">Cookies & URL's</Link>
+      <a href="https://admindev.docs.apiary.io/" target="_blank">
+        API Docs
+      </a>
     </div>
   );
 };

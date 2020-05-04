@@ -9,6 +9,7 @@ import EditVendor from "./components/EditVendor";
 import listAllVendors from "./components/listAllVendors";
 import ListAllSpecific from "./components/body_components/list_all_components/list-all-specific";
 import ListAllCookie from "./components/listAllCookie";
+import Docs from "./components/documentation/docs";
 function App() {
   return (
     <div className="App">
